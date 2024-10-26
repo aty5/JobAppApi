@@ -1,26 +1,39 @@
 package com.aty.jobappapi.job;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class JobController {
-    private List<Job> jobs = new ArrayList<>();
+
+    private JobService jobService;
+
+    public JobController(JobService jobService) {
+        this.jobService = jobService;
+    }
+
 
     @GetMapping("/jobs")
-    public List<Job> findAll(){
+    public List<Job> findAll() {
 
-        return jobs;
+        return jobService.findAll();
+    }
+
+    @GetMapping("/jobs/{id}")
+    public Job getJobById(@PathVariable Long id) {
+        Job job = jobService.getJobById(id);
+        if (job != null) {
+            return job;
+        }
+        // pour tester
+        return new Job(1L, "TestJob", "TestJob", "30000", "40000", "Lyon");
     }
 
     @PostMapping("/jobs")
-    public String createJob(@RequestBody Job job){
-        jobs.add(job);
+    public String createJob(@RequestBody Job job) {
+        jobService.createJob(job);
         return "Job added successfully";
     }
 

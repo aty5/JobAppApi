@@ -17,6 +17,7 @@ public class Job {
         this.location = location;
     }
 
+
     public Long getId() {
         return id;
     }
