@@ -1,5 +1,7 @@
 package com.aty.jobappapi.job;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -16,26 +18,35 @@ public class JobController {
 
 
     @GetMapping("/jobs")
-    public List<Job> findAll() {
+    public ResponseEntity<List<Job>> findAll() {
 
-        return jobService.findAll();
+        return ResponseEntity.ok(jobService.findAll()); //une facon de renvoyer un ResponseEntity
     }
 
     @GetMapping("/jobs/{id}")
-    public Job getJobById(@PathVariable Long id) {
+    public ResponseEntity<Job> getJobById(@PathVariable Long id) {
         Job job = jobService.getJobById(id);
         if (job != null) {
-            return job;
+            return new ResponseEntity<>(job, HttpStatus.OK);
         }
         // pour tester
-        return new Job(1L, "TestJob", "TestJob", "30000", "40000", "Lyon");
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND); //une autre facon de renvoyer un ResponseEntity
     }
 
     @PostMapping("/jobs")
-    public String createJob(@RequestBody Job job) {
+    public ResponseEntity<String> createJob(@RequestBody Job job) {
         jobService.createJob(job);
-        return "Job added successfully";
+        return new ResponseEntity<>("Job added successfully", HttpStatus.CREATED); // ou HttpStatus.OK HttpStatus.Created//une autre facon de renvoyer un ResponseEntity
     }
 
+
+    @DeleteMapping("/jobs/{id}")
+    public ResponseEntity<String> deleteJob(@PathVariable Long id) {
+        boolean deleted = jobService.deleteJobById(id);
+        if (deleted)
+            return new ResponseEntity<>("Job deleted successfully", HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+    }
 
 }
