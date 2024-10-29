@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+//@RequestMapping("/jobs") //prefixe pour toutes les methodes du controleur implique de supp dans les methodes
 public class JobController {
 
     private JobService jobService;
@@ -47,6 +48,16 @@ public class JobController {
             return new ResponseEntity<>("Job deleted successfully", HttpStatus.OK);
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
+    }
+
+    @PutMapping("/jobs/{id}") //privilegier ces annotations specifiques
+    //@RequestMapping(value = "/jobs/{id}", method = RequestMethod.PUT) //autre facon d ecrire les annotations
+    public ResponseEntity<String> updateJob(@PathVariable Long id,
+                                            @RequestBody Job updatedJob){
+        boolean updated = jobService.updateJob(id, updatedJob);
+        if(updated)
+            return new ResponseEntity<>("Job updated successfully", HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
 }
