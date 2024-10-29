@@ -1,6 +1,13 @@
 package com.aty.jobappapi.job;
 
+import jakarta.persistence.*;
+
+@Entity
+//@Table(name = "job_table") //possible de persister en bdd sous le nom désiré
 public class Job {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String description;
@@ -15,6 +22,11 @@ public class Job {
         this.minSalary = minSalary;
         this.maxSalary = maxSalary;
         this.location = location;
+    }
+
+    // besoin d un constructeur sans param pour persistence JPA
+    public Job() {
+
     }
 
 
