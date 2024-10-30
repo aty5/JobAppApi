@@ -1,9 +1,10 @@
 package com.aty.jobappapi.review;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.aty.jobappapi.company.Company;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 
+@Entity
 public class Review {
 
     @Id
@@ -12,6 +13,18 @@ public class Review {
     private String title;
     private String description;
     private double rating;
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    @JsonIgnore
+    @ManyToOne
+    private Company company;
 
     public Long getId() {
         return id;

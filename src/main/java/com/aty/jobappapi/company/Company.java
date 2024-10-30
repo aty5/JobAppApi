@@ -2,6 +2,7 @@ package com.aty.jobappapi.company;
 
 
 import com.aty.jobappapi.job.Job;
+import com.aty.jobappapi.review.Review;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
@@ -20,11 +21,19 @@ public class Company {
     @OneToMany(mappedBy = "company") // attribut permet de supprimer la table de jointure qui devient inutile
     private List<Job> jobs;
 
-    //@OneToMany
-    //private List<Review> reviews; // a venir
 
+    @OneToMany(mappedBy = "company")
+    private  List<Review> reviews;
 
     public Company() {
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 
     public Long getId() {
