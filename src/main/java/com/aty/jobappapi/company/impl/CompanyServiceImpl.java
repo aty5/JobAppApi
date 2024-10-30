@@ -3,6 +3,7 @@ package com.aty.jobappapi.company.impl;
 import com.aty.jobappapi.company.Company;
 import com.aty.jobappapi.company.CompanyRepository;
 import com.aty.jobappapi.company.CompanyService;
+import com.aty.jobappapi.job.Job;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -42,7 +43,18 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
+    public Company getCompanyById(Long id) {
+
+        return companyRepository.findById(id).orElse(null);
+    }
+
+    @Override
     public void createCompany(Company company) {
         companyRepository.save(company);
+    }
+
+    @Override
+    public List<Company> findAll() {
+        return companyRepository.findAll();
     }
 }

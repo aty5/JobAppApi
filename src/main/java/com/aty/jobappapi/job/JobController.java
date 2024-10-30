@@ -30,8 +30,8 @@ public class JobController {
         if (job != null) {
             return new ResponseEntity<>(job, HttpStatus.OK);
         }
-        // pour tester
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND); //une autre facon de renvoyer un ResponseEntity
+
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @PostMapping("/jobs")
