@@ -14,8 +14,6 @@ import java.util.Optional;
 public class JobServiceImpl implements JobService {
     // private List<Job> jobs = new ArrayList<>();
     JobRepository jobRepository;
-    private Long nextId = 1L; // une facon de s occuper de numerotation Ids sans annotations JPA
-
     public JobServiceImpl(JobRepository jobRepository) {
         this.jobRepository = jobRepository;
     }
@@ -28,7 +26,7 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public void createJob(Job job) {
-        job.setId(nextId++);
+
         jobRepository.save(job);
         //jobs.add(job);
     }
@@ -61,6 +59,9 @@ public class JobServiceImpl implements JobService {
             job.setMinSalary(updatedJob.getMinSalary());
             job.setMaxSalary(updatedJob.getMaxSalary());
             job.setLocation(updatedJob.getLocation());
+
+            jobRepository.save(job);
+
             return true;
         }
         return false;
