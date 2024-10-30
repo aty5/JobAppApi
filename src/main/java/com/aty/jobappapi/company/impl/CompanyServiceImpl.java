@@ -57,4 +57,14 @@ public class CompanyServiceImpl implements CompanyService {
     public List<Company> findAll() {
         return companyRepository.findAll();
     }
+
+    @Override
+    public boolean deleteCompanyById(Long id) {
+        if(companyRepository.existsById(id)) {
+            companyRepository.deleteById(id);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

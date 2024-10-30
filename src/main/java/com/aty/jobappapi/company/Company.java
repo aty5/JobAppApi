@@ -2,6 +2,7 @@ package com.aty.jobappapi.company;
 
 
 import com.aty.jobappapi.job.Job;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -15,7 +16,8 @@ public class Company {
     private String name;
     private  String description;
 
-    @OneToMany
+    @JsonIgnore
+    @OneToMany(mappedBy = "company") // attribut permet de supprimer la table de jointure qui devient inutile
     private List<Job> jobs;
 
     //@OneToMany
