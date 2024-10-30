@@ -3,7 +3,6 @@ package com.aty.jobappapi.company.impl;
 import com.aty.jobappapi.company.Company;
 import com.aty.jobappapi.company.CompanyRepository;
 import com.aty.jobappapi.company.CompanyService;
-import com.aty.jobappapi.job.Job;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -43,7 +42,7 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public void createCompzny(Company company) {
+    public void createCompany(Company company) {
         companyRepository.save(company);
     }
 }
