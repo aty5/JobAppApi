@@ -20,6 +20,13 @@ public class ReviewController {
         return new ResponseEntity<>(reviewService.getAllReviews(id), HttpStatus.OK);
     }
 
+    @GetMapping("/reviews/{reviewId}")
+    public ResponseEntity<Review> getReview(@PathVariable Long id,
+                                            @PathVariable Long reviewId) {
+
+        return new ResponseEntity<>(reviewService.getReview(id, reviewId), HttpStatus.OK);
+    }
+
     @PostMapping("/reviews")
     public ResponseEntity<String> addReview(@PathVariable Long id,
                                             @RequestBody Review review) {
@@ -31,5 +38,6 @@ public class ReviewController {
             return new ResponseEntity<>("Review not saved", HttpStatus.NOT_FOUND);
 
     }
+
 
 }
