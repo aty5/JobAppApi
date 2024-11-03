@@ -59,12 +59,12 @@ docker compose up -d
       OR
 
     - ```bash
-     docker exec -it <postgre_container_ID> bash
-     psql -U CHOOSEN_USERNAME
-     CREATE DATABASE jobappapi;
-     exit
-     exit
-     ```
+      docker exec -it <postgre_container_ID> bash
+      psql -U CHOOSEN_USERNAME
+      CREATE DATABASE jobappapi;
+      exit
+      exit
+      ```
 
 4. Run the app
 ```bash
