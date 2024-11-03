@@ -38,8 +38,8 @@ cd jobappapi
 ### DB config
 1. docker-compose.yaml
 ```bash
-POSTGRES_USER: CHOOSE_AN_USERNAME
-POSTGRES_PASSWORD: CHOOSE_A_PASSWORD
+POSTGRES_USER:CHOOSE_AN_USERNAME
+POSTGRES_PASSWORD:CHOOSE_A_PASSWORD
 ```
 
 2. application.properties
@@ -112,7 +112,6 @@ Content-Type: application/json
     "location": "Remote"
   }
 }
-
 ```
 
 ## Check out the code to discover all the routes!
