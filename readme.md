@@ -2,11 +2,16 @@
 
 Basic **Spring Boot** API.
 
-**Technical environment** :
+**Project objectives** :
+* Refresh knowledge about Spring Boot
+* Use it as a basis for learning new skills in Spring Boot environment
+
+
+**Environment** :
 * Docker Engine + Docker Compose (Docker Desktop)
 * JDK17 / Maven / Tomcat
 * Spring Boot / Spring Data JPA / PostgreSQL
-* HTTP client
+* HTTP Client (Postman,...)
 * Git
 
 
